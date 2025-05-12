@@ -8,9 +8,9 @@ enabling them to communicate with each other.
 
 It is necessary to install the libraries libopenmpi-dev and openmpi-bin.
 
-To compile the programa, the command
+To compile the program, the command
 
-    ```bash
+    ```
     mpicc nth_prime.c -o nth_prime
     ```
 should be executed, generating an executable
