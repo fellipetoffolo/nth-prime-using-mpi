@@ -9,16 +9,19 @@ enabling them to communicate with each other.
 It is necessary to install the libraries libopenmpi-dev and openmpi-bin.
 
 To compile the programa, the command
+
     ```bash
     mpicc nth_prime.c -o nth_prime
     ```
 should be executed, generating an executable
 
 To run the executable on one machine with multiple cores, run the command
+
     ```bash
     mpirun --host localhost:<n> ./mpi_nth_prime <N>
     ```
 substituting "n" by the number of cores and "N" by the prime number you want to calculate. Alternatively, to run it on many machines you can run
+
     ```bash
     mpirun -np <n> --hostfile <file> ./mpi_nth_prime <N>
     ```
