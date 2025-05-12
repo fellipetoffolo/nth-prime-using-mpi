@@ -1,41 +1,41 @@
 ### MPI program for calculating the nth prime number
 
-##### This program takes advantage of multiple processing units to calculate the nth prime number based on 
-##### parallelism by data partitioning. It uses the MPI C library for passing messages betweens the proccess,
-##### enabling them to communicate with each other.
+ This program takes advantage of multiple processing units to calculate the nth prime number based on 
+parallelism by data partitioning. It uses the MPI C library for passing messages betweens the proccess,
+enabling them to communicate with each other.
 
 
 ### Logic
 
 #### The program works in the following way:
 
-##### It estimates an upper bound for the nth prime number using the approximation showed by Christian Axler on
-##### the paper "New estimates for the nth prime number", which employed the expression n*(log(n) + log(log(n))).
-##### For this case, a slight variant was used: n*(log(n) + log(log(n))*1.2).
+It estimates an upper bound for the nth prime number using the approximation showed by Christian Axler on
+the paper "New estimates for the nth prime number", which employed the expression n*(log(n) + log(log(n))).
+For this case, a slight variant was used: n*(log(n) + log(log(n))*1.2).
 
-##### For n ≤ 4, the primes {2, 3, 5, 7} are handled directly without computation.
-##### For n > 4
+For n ≤ 4, the primes {2, 3, 5, 7} are handled directly without computation.
+For n > 4
 
-##### The program initializes an MPI environment and distributes the task of checking for primes across all 
-##### available processes.
+The program initializes an MPI environment and distributes the task of checking for primes across all 
+available processes.
 
-##### Each process starts testing odd numbers from 11, incrementing by a stride of 2 × the number of tasks 
-##### to ensure coverage without overlap.
+Each process starts testing odd numbers from 11, incrementing by a stride of 2 × the number of tasks 
+to ensure coverage without overlap.
 
-##### A local dynamic array stores the prime numbers found by each process within the estimated upper limit.
+A local dynamic array stores the prime numbers found by each process within the estimated upper limit.
 
-##### Once all processes finish, they send their local results to the root process (rank 0).
+Once all processes finish, they send their local results to the root process (rank 0).
 
-##### The root process gathers all primes, adds the first four known primes, sorts the complete list, and 
-##### retrieves the nth prime.
+The root process gathers all primes, adds the first four known primes, sorts the complete list, and 
+retrieves the nth prime.
 
-##### If the total number of primes found is insufficient, a warning is shown indicating the estimated 
-##### limit was too low.
+If the total number of primes found is insufficient, a warning is shown indicating the estimated 
+limit was too low.
 
-##### Finally, the root process reports the nth prime number and the total elapsed execution time.
+Finally, the root process reports the nth prime number and the total elapsed execution time.
 
 
-##### 1. The isprime function verifies if a given number is prime. 
+#### 1. The isprime function verifies if a given number is prime. 
 
 - If it is less than 2, it is not prime.
 - If it is 2, it is prime.
@@ -49,12 +49,12 @@
 - Why? Well, supposing that a*b = n, and that a > √n and b > √n, then a\*b > n, which is a contradiction, so
 at least one of then must be less than or equal to √n.
 
-##### 2. The cmpfunc compares two numbers on the qsort function
+#### 2. The cmpfunc compares two numbers on the qsort function
 
 - If a - b = 0, the a and b are equal.
 
 
-##### The main function coordinates the entire MPI-based parallel prime search. 
+#### 3. The main function coordinates the entire MPI-based parallel prime search. 
 
 - It initializes the MPI environment and retrieves:
 
