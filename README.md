@@ -10,13 +10,12 @@ It is necessary to install the libraries libopenmpi-dev and openmpi-bin.
 
 To compile the program, the command
 
-    ```
+
     mpicc nth_prime.c -o nth_prime
-    ```
+    
 should be executed, generating an executable
 
 To run the executable on one machine with multiple cores, run the command
-
     ```bash
     mpirun --host localhost:<n> ./mpi_nth_prime <N>
     ```
