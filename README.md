@@ -1,11 +1,25 @@
-### MPI program for calculating the nth prime number
+## MPI program for calculating the nth prime number
 
  This program takes advantage of multiple processing units to calculate the nth prime number based on 
 parallelism by data partitioning. It uses the MPI C library for passing messages betweens the proccess,
 enabling them to communicate with each other.
 
+## Compilation and Usage
 
-### Logic
+It is necessary to install the libraries libopenmpi-dev and openmpi-bin.
+
+To compile the programa, the command
+    ``` mpicc nth_prime.c -o nth_prime ```
+should be executed, generating an executable
+
+To run the executable on one machine with multiple cores, run the command
+    ``` mpirun --host localhost:<n> ./mpi_nth_prime <N> ```
+substituting <n> by the number of cores and <N> by the prime number you want to calculate. Alternatively, to run it on many machines you can run
+    ```` mpirun -np <n> --hostfile <file> ./mpi_nth_prime <N> ```
+to specify a <file> with all the hosts names and slots, each separated by a new line. In the last case, the number of procecess <n> can be any number between zero and the summed number of cores of all the machines used
+
+
+## Logic
 
 #### The program works in the following way:
 
@@ -34,6 +48,8 @@ limit was too low.
 
 Finally, the root process reports the nth prime number and the total elapsed execution time.
 
+
+## Functions
 
 #### 1. The isprime function verifies if a given number is prime. 
 
