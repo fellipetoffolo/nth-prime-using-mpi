@@ -1,7 +1,7 @@
 # MPI program for calculating the nth prime number
 
 This program takes advantage of multiple processing units to calculate the nth prime number based on
-parallelism by data partitioning. It uses the MPI C library for passing messages betweens the proccess,
+parallelism by data partitioning. It uses the MPI C library for passing messages betweens the processes,
 enabling them to communicate with each other.
 
 The structure of the repository is simply divided into:
@@ -9,7 +9,7 @@ The structure of the repository is simply divided into:
 - source-code file: **nth_prime.c**
 - executable: **nth_prime** (recomended recompilation for the target system before running)
 - script for installing necessary dependencies: **install_dependencies.sh**
-- description and analysis of a use case of this program on a RK3228A TV Box computer cluster: **CASE_STUDY.md**
+- description and analysis of a use case of this program runnign on a RK3228A TV Box computer cluster: **CASE_STUDY.md**
 - **README.md**
 
 ## Dependencies
@@ -43,7 +43,14 @@ substituting "n" by the number of cores and "N" by the prime number you want to 
 
     mpirun -np <n> --hostfile <file> ./nth_prime <N>
 
-to specify a "file" with all the hosts names and slots, each separated by a new line. In the last case, the number of procecess "n" can be any number between zero and the summed number of cores of all the machines used.
+to specify a "file" with all the hosts names and slots, each separated by a new line. In the last case, the number of processes "n" can be any number between zero and the summed number of cores of all the machines used.
+
+Example of a hostfile:
+
+    master slots=4
+    node1 slots=4
+    node2 slots=4
+    node3 slots=4
 
 ## Logic and program functioning
 

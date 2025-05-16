@@ -15,7 +15,7 @@
 *   mpirun -np <número_de_processos> ./mpi_nth_prime <n>
 *
 * AUTHOR: Fellipe Toffolo de Souza
-* LAST REVISED: 05/05/2025
+* LAST REVISED: 16/05/2025
 ******************************************************************************/
 #include "mpi.h"
 #include <stdio.h>
@@ -144,7 +144,7 @@ int main (int argc, char *argv[])
         all_primes[3] = 7;
     }
 
-    /* Collects the primes founf by the process (following the 4th position) */
+    /* Collects the primes found by the process (following the 4th position) */
     MPI_Gatherv(local_primes, local_count, MPI_INT,
                 all_primes ? all_primes+4 : NULL, recvcounts, displs, MPI_INT,
                 0, MPI_COMM_WORLD);
