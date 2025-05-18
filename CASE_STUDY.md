@@ -101,4 +101,4 @@ The figure below presents a visual comparison showing that, despite using 16 uni
 
 ![Execution time](.assets/comparison_nth_prime.png)
 
-It could be estimated that with more units, the TV Boxes might beat the desktop, but unexpected behavior due to overhead may actually delay the execution in some way. The reproduction of this experiment with better-performing TV Boxes is still a subject of testing, though. Benchmarking tests have already shown that, in certain metrics, the CPU of some models reach up to 8 times the load of the UniTV S1 model, however they are no as plentiful as the former one.
+It could be estimated that with more units, the TV Boxes might beat the desktop, but unexpected behavior due to overhead may actually delay the execution in some way. The reproduction of this experiment with better-performing TV Boxes is still a subject of testing, though. Benchmarking tests have already shown that, in certain metrics, the CPU of some models reach up to 8 times the load of the UniTV S1 model, however they are not as plentiful as the former one.
